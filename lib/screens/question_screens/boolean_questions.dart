@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:quiz_app_flutter/scoreprovider.dart';
+import 'package:quiz_app_flutter/services/scoreprovider.dart';
 import 'package:quiz_app_flutter/widgets/question_widget.dart';
 import 'package:quiz_app_flutter/widgets/result_widget.dart';
 
-import 'models/question_model.dart';
+import '../../models/question_model.dart';
 
 class BooleanQuestionScreen extends StatefulWidget {
   final List<Question> questions;
@@ -23,11 +23,13 @@ class _BooleanQuestionScreenState extends State<BooleanQuestionScreen> {
     return ButtonTheme(
       minWidth: MediaQuery.of(context).size.width,
       height: 50,
-      child: OutlineButton(
-        highlightColor: Colors.pinkAccent,
-        highlightedBorderColor: Colors.pinkAccent,
-        textColor: Color(0xFF2f243a),
-        borderSide: BorderSide(width: 1.5),
+      child: OutlinedButton(
+        style: OutlinedButton.styleFrom(
+          backgroundColor: Colors.pinkAccent,
+          textStyle: TextStyle(
+            color: Color(0xFF2f243a),
+          ),
+        ),
         onPressed: () => onPress(label),
         child: Text(
           label,
@@ -38,7 +40,7 @@ class _BooleanQuestionScreenState extends State<BooleanQuestionScreen> {
   }
 
   void onPress(String answer) {
-    if (answer == widget.questions[questionIndex].correct_answer) {
+    if (answer == widget.questions[questionIndex].correctAnswer) {
       var score = context.read<Score>();
       score.increment();
     }
