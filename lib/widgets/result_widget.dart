@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:quiz_app_flutter/scoreprovider.dart';
+import 'package:quiz_app_flutter/services/scoreprovider.dart';
 
 class ResultsPage extends StatelessWidget {
   @override
